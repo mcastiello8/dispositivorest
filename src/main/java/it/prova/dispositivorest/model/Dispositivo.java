@@ -2,12 +2,18 @@ package it.prova.dispositivorest.model;
 
 import java.time.LocalDate;
 
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import it.prova.dispositivorest.web.rest.resources.LocalDateAdapter;
+
+
 public class Dispositivo {
 
 	private Long id;
 	private String marca;
 	private String modello;
 	private Integer prezzo;
+	@XmlJavaTypeAdapter(LocalDateAdapter.class)
 	private LocalDate dataProduzione;
 	
 	public Dispositivo() {}

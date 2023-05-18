@@ -33,14 +33,13 @@ public class DispositivoDAOMock {
 		return null;
 	}
 
-	public void insert(Dispositivo dispositivoInput, String dataDaParsare) {
+	public void insert(Dispositivo dispositivoInput) {
 		Long maxId = 1L;
 		for (Dispositivo dispositivoItem : DB_MOCK) {
 			if (dispositivoItem.getId() > maxId)
 				maxId = dispositivoItem.getId();
 		}
 		dispositivoInput.setId(++maxId);
-		dispositivoInput.setDataProduzione(LocalDate.parse(dataDaParsare));
 		DB_MOCK.add(dispositivoInput);
 	}
 
@@ -73,13 +72,13 @@ public class DispositivoDAOMock {
 	}
 	
 	@SuppressWarnings("static-access")
-	public Dispositivo update(Dispositivo input, String dataDaAggiornareParsed) {
+	public Dispositivo update(Dispositivo input) {
 		for (Dispositivo dispositivoItem : DB_MOCK) {
 			if (dispositivoItem.getId() == input.getId()) {
 				dispositivoItem.setMarca(input.getMarca());
 				dispositivoItem.setModello(input.getModello());
 				dispositivoItem.setPrezzo(input.getPrezzo());
-				dispositivoItem.setDataProduzione(input.getDataProduzione().parse(dataDaAggiornareParsed));
+				dispositivoItem.setDataProduzione(input.getDataProduzione());
 				return dispositivoItem;
 			}
 		}

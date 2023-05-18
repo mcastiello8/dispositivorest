@@ -45,9 +45,9 @@ public class DispositivoResource {
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response insertNuovoDispositivo(Dispositivo dispositivoInput, @QueryParam("dataProduzione") String dataDaParsare) {
+	public Response insertNuovoDispositivo(Dispositivo dispositivoInput) {
 		LOGGER.info("Verbo Http.........................." + request.getMethod());
-		dispositivoDaoMock.insert(dispositivoInput, dataDaParsare);
+		dispositivoDaoMock.insert(dispositivoInput);
 		return Response.status(200).entity(dispositivoInput).build();
 	}
 
@@ -80,9 +80,9 @@ public class DispositivoResource {
 
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response aggiornaDispositivo(Dispositivo dispositivoInput,@QueryParam("dataProduzione") String dataAggiornataParsed) {
+	public Response aggiornaDispositivo(Dispositivo dispositivoInput) {
 		LOGGER.info("Verbo Http.........................." + request.getMethod());
-		Dispositivo result = dispositivoDaoMock.update(dispositivoInput, dataAggiornataParsed);
+		Dispositivo result = dispositivoDaoMock.update(dispositivoInput);
 		return Response.status(200).entity(result).build();
 	}
 	
